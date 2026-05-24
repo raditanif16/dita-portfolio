@@ -1331,7 +1331,7 @@ const CertificationSection = ({ setSelectedImage }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-fadeIn">
         {filteredCerts.map((cert) => (
           <div
-            key={cert.id} 
+            key={cert.id}
             className="group glass-card rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-300"
             onClick={() => setSelectedImage(cert.image)}
           >
@@ -1488,10 +1488,10 @@ export default function App() {
     e.preventDefault();
 
     emailjs.sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       form.current,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY   
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
       .then((result) => {
         setShowSuccess(true);
@@ -1518,8 +1518,8 @@ export default function App() {
       <MagicCursor />
       <MusicWidget />
 
-      <nav className="fixed top-0 left-0 right-0 z-40 glass-card mx-4 mt-4 rounded-full px-6 py-3 flex justify-between items-center transition-all duration-300">
-        <a href="#" className="text-xl font-bold text-gradient">Dita</a>
+      <nav className={`fixed top-0 left-0 right-0 z-[60] mx-4 mt-4 rounded-full px-6 py-3 flex justify-between items-center transition-all duration-300 ${isMenuOpen ? 'bg-transparent border-transparent shadow-none' : 'glass-card'}`}>
+        <a href="#" className="text-xl font-bold text-gradient relative z-[70]">Dita</a>
 
         <div className="hidden md:flex gap-6 items-center">
           {navLinks.map(link => (
@@ -1533,35 +1533,53 @@ export default function App() {
           >
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
-
-          <a href="#contact" className="px-5 py-2 bg-gradient-to-r from-pink-400 to-blue-400 text-white rounded-full text-sm font-bold shadow-lg shadow-pink-200 hover:scale-105 transition-transform">
-            Hire Me
-          </a>
         </div>
 
-        <button className="md:hidden p-2 text-muted" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <div className="space-y-1.5">
-            <span className={`block w-6 h-0.5 bg-current transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-current transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-current transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        <button
+          className={`md:hidden p-2 relative z-[70] transition-colors ${isMenuOpen ? 'text-slate-800 dark:text-slate-100' : 'text-slate-600 dark:text-slate-300'}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <div className="w-6 h-5 flex flex-col justify-between">
+            <span className={`block h-0.5 bg-current rounded-full transition-all duration-300 origin-left ${isMenuOpen ? 'rotate-45 translate-x-1' : 'w-full'}`}></span>
+            <span className={`block h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-full'}`}></span>
+            <span className={`block h-0.5 bg-current rounded-full transition-all duration-300 origin-left ${isMenuOpen ? '-rotate-45 translate-x-1' : 'w-full'}`}></span>
           </div>
         </button>
       </nav>
 
-      {isMenuOpen && (
-        <div className="mobile-menu fixed inset-0 z-30 bg-white/95 backdrop-blur-md pt-24 px-6 flex flex-col gap-6 md:hidden">
-          {navLinks.map(link => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              onClick={() => setIsMenuOpen(false)}
-              className="text-2xl font-bold text-main border-b border-pink-100 pb-2"
-            >
-              {link}
-            </a>
-          ))}
+      <div className={`fixed inset-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl flex flex-col transition-all duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+        <div className="flex flex-col gap-6 pt-32 px-8 flex-1 overflow-y-auto pb-10">
+
+          <div className="flex flex-col gap-5">
+            {navLinks.map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800/60 pb-4 transition-all hover:text-pink-500 dark:hover:text-pink-400 active:translate-x-2"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-6 mt-4">
+            <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-inner">
+              <span className="font-semibold text-slate-700 dark:text-slate-300">
+                {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+              </span>
+              <button
+                onClick={toggleDarkMode}
+                className="p-3 rounded-full bg-white dark:bg-slate-700 text-slate-600 dark:text-yellow-400 shadow-sm border border-slate-200 dark:border-slate-600 transition-transform active:scale-95"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+
         </div>
-      )}
+      </div>
 
       <section className="pt-40 pb-20 px-6 container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12" id="about">
 
@@ -2023,7 +2041,7 @@ export default function App() {
       {selectedImage && (
         <div
           className="fixed inset-0 z-[9999] bg-slate-900/80 dark:bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer popup-anim"
-          onClick={() => setSelectedImage(null)} 
+          onClick={() => setSelectedImage(null)}
         >
           <button
             className="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
@@ -2035,7 +2053,7 @@ export default function App() {
           <img
             src={selectedImage}
             alt="Project Preview"
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
             className="relative w-auto max-w-[90vw] md:max-w-2xl max-h-[70vh] object-contain rounded-xl shadow-2xl ring-4 ring-white/10 cursor-default"
           />
         </div>
@@ -2048,7 +2066,7 @@ export default function App() {
         >
           <div
             className="modal-glass glass-card rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl popup-anim relative overflow-hidden"
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-400 to-blue-400"></div>
 
