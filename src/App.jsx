@@ -31,7 +31,7 @@ const SKILLS_DATA = [
     title: "Programming Languages",
     icon: <Code className="w-6 h-6 text-blue-500" />,
     hoverClass: "hover:!bg-blue-500 hover:!text-white hover:!border-blue-500",
-    skills: ["C#", "JavaScript", "TypeScript", "PHP", "Kotlin", "HTML5", "CSS3"]
+    skills: ["C#", "JavaScript", "TypeScript", "PHP", "Kotlin", "HTML", "CSS"]
   },
   {
     title: "Frameworks & Libraries",
@@ -55,7 +55,7 @@ const SKILLS_DATA = [
     title: "Tools & Others",
     icon: <Wrench className="w-6 h-6 text-orange-500" />,
     hoverClass: "hover:!bg-orange-500 hover:!text-white hover:!border-orange-500",
-    skills: ["Git", "Postman", "Trello", "Microsoft Office", "Canva", "English"]
+    skills: ["Git", "Postman", "Trello", "Microsoft Office", "Canva"]
   },
   {
     title: "Soft Skills",
@@ -1281,7 +1281,7 @@ INSTRUCTIONS:
             <p className="text-sm text-muted mb-2">Paste a Job Description here. AI will analyze how well my skills match your requirements!</p>
             <textarea
               value={jobDesc} onChange={(e) => setJobDesc(e.target.value)}
-              placeholder="Paste Job Description here (e.g., 'Looking for a developer with React and Node.js experience...')"
+              placeholder="Paste Job Description here (e.g., 'Looking for a developer with React and .NET experience...')"
               className="w-full px-5 py-4 rounded-2xl border border-emerald-100 bg-white/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-300 resize-none h-32 placeholder-slate-400 text-slate-700"
             />
             <button onClick={handleJobMatch} disabled={isLoading || !jobDesc.trim()} className="w-full py-3 bg-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all disabled:opacity-50 flex items-center justify-center gap-2">
@@ -1705,7 +1705,7 @@ export default function App() {
             <div className="space-y-6">
               {[
                 {
-                  title: "Associate Degree (Diploma 3) in Computer Engineering",
+                  title: "Associate Degree in Computer Engineering",
                   school: "IPB University — Bogor, West Java",
                   period: "Jul 2018 - Aug 2021",
                   desc: (
@@ -1860,7 +1860,7 @@ export default function App() {
             },
             {
               title: "Digital Arts Teaching",
-              desc: "Taught 2D/3D design, basic modeling, animation, and rendering using Blender to 100+ students.",
+              desc: "Taught 2D/3D design, basic modeling, animation, and rendering using Blender.",
               tech: ["Blender", "3D Design", "Mentoring"],
               img: "/teaching.png",
               isPrivate: false
@@ -1946,7 +1946,7 @@ export default function App() {
               <div>
                 <h2 className="text-3xl font-bold mb-4 text-gradient">Let's Connect!</h2>
                 <p className="text-muted mb-8 leading-relaxed">
-                  Currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                  Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
 
                 <div className="space-y-5">
