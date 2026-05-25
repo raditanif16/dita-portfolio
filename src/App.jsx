@@ -5,7 +5,7 @@ import {
   Heart, Sparkles, Coffee, Star, Briefcase, GraduationCap,
   Code, Send, UserCheck, Bot, Loader2,
   MessageSquare, BriefcaseBusiness, Lightbulb, Target, Download,
-  Database, Layers, Box, Wrench, Brain, Lock, ExternalLink, Eye, Award, Sun, Moon
+  Database, Layers, Box, Wrench, Brain, Lock, ExternalLink, Eye, Award, Sun, Moon, Users
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
@@ -89,6 +89,27 @@ const CERTIFICATIONS_DATA = [
   { id: 16, title: "Digital Literacy", issuer: "Kominfo", category: "Workshop", image: "/certificates/9.png" },
   { id: 17, title: "English Proficiency Course", issuer: "Vit English", category: "Workshop", image: "/certificates/17.png" },
   { id: 18, title: "The Dangers of Procrastination", issuer: "GenBI IPB", category: "Workshop", image: "/certificates/8.png" }
+];
+
+const ORGANIZATIONS_DATA = [
+  {
+    title: "MDDD Division Member",
+    org: "GenBI IPB",
+    period: "Jan 2021 – Dec 2021",
+    desc: "Managed the official TikTok account and acted as a content creator, producing weekly engaging content related to Bank Indonesia and national issues."
+  },
+  {
+    title: "Secretary & Committee Member",
+    org: "HIMAVO Micro IT",
+    period: "Jan 2019 – Aug 2020",
+    desc: "Managed administrative documents, coordinated tech education events, handled the open recruitment process, and documented organizational elections."
+  },
+  {
+    title: "Coordinator of MDDD",
+    org: "Diploma Medical Team",
+    period: "Jan 2019 – Dec 2019",
+    desc: "Led a creative team to manage media, design, and event documentation. Published visual assets across social platforms and supported campus health initiatives."
+  }
 ];
 
 const customStyles = `
@@ -1208,15 +1229,15 @@ INSTRUCTIONS:
             </div>
           </div>
 
-          <div className="flex flex-wrap bg-white/50 p-1 rounded-xl border border-pink-100 shadow-inner w-full md:w-auto">
-            <button onClick={() => setActiveTab('qa')} className={`flex flex-1 md:flex-none justify-center items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'qa' ? 'bg-white text-pink-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-              <MessageSquare className="w-4 h-4" /> Q&A
+          <div className="flex w-full md:w-auto overflow-x-auto hide-scrollbar bg-white/50 dark:bg-slate-800/50 p-1.5 rounded-xl border border-pink-100 dark:border-slate-700 shadow-inner">
+            <button onClick={() => setActiveTab('qa')} className={`flex items-center gap-1.5 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all whitespace-nowrap flex-1 md:flex-none justify-center ${activeTab === 'qa' ? 'bg-white dark:bg-slate-700 text-pink-600 dark:text-pink-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <MessageSquare className="w-3.5 h-3.5" /> Q&A
             </button>
-            <button onClick={() => setActiveTab('pitch')} className={`flex flex-1 md:flex-none justify-center items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'pitch' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-              <BriefcaseBusiness className="w-4 h-4" /> Pitch
+            <button onClick={() => setActiveTab('pitch')} className={`flex items-center gap-1.5 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all whitespace-nowrap flex-1 md:flex-none justify-center ${activeTab === 'pitch' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <BriefcaseBusiness className="w-3.5 h-3.5" /> Pitch
             </button>
-            <button onClick={() => setActiveTab('match')} className={`flex flex-1 md:flex-none justify-center items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'match' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-              <Target className="w-4 h-4" /> Job Match
+            <button onClick={() => setActiveTab('match')} className={`flex items-center gap-1.5 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all whitespace-nowrap flex-1 md:flex-none justify-center ${activeTab === 'match' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <Target className="w-3.5 h-3.5" /> Job Match
             </button>
           </div>
         </div>
@@ -1316,12 +1337,12 @@ const CertificationSection = ({ setSelectedImage }) => {
         <h2 className="text-3xl font-bold mb-8 text-center text-gradient">Certifications</h2>
       </Reveal>
 
-      <div className="flex justify-center gap-2 mb-10">
+      <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeCategory === cat ? 'bg-pink-500 text-white shadow-lg' : 'bg-white text-slate-500 hover:bg-slate-100'}`}
+            className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-pink-500 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
           >
             {cat}
           </button>
@@ -1423,12 +1444,17 @@ const StatsSection = () => {
 
   return (
     <Reveal>
-      <section className="py-12 px-6 container mx-auto max-w-4xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="py-8 md:py-12 px-4 md:px-6 container mx-auto max-w-4xl">
+        <div className="grid grid-cols-3 gap-3 md:gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="glass-card p-6 rounded-3xl text-center hover:scale-105 transition-transform duration-300">
-              <h3 className="text-4xl font-bold text-gradient mb-1">{stat.value}</h3>
-              <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">{stat.label}</p>
+            <div 
+              key={index} 
+              className="glass-card p-3 md:p-6 rounded-2xl md:rounded-3xl text-center hover:scale-105 transition-transform duration-300 flex flex-col justify-center"
+            >
+              <h3 className="text-2xl md:text-4xl font-bold text-gradient mb-1">{stat.value}</h3>
+              <p className="text-[10px] md:text-sm text-slate-500 font-medium uppercase tracking-wider leading-tight">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
@@ -1549,31 +1575,32 @@ export default function App() {
       </nav>
 
       <div className={`fixed inset-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl flex flex-col transition-all duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
-        <div className="flex flex-col gap-6 pt-32 px-8 flex-1 overflow-y-auto pb-10">
+        <div className="flex flex-col pt-24 px-6 flex-1 overflow-y-auto pb-10">
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800/60 pb-4 transition-all hover:text-pink-500 dark:hover:text-pink-400 active:translate-x-2"
+                className="text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800/60 py-3.5 transition-all hover:text-pink-500 dark:hover:text-pink-400 active:translate-x-2 flex items-center justify-between"
               >
                 {link}
+                <ChevronRight className="w-4 h-4 text-slate-300 dark:text-slate-600" />
               </a>
             ))}
           </div>
 
-          <div className="flex flex-col gap-6 mt-4">
-            <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-inner">
-              <span className="font-semibold text-slate-700 dark:text-slate-300">
+          <div className="mt-8">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-inner">
+              <span className="font-semibold text-sm text-slate-700 dark:text-slate-300">
                 {isDarkMode ? 'Dark Mode' : 'Light Mode'}
               </span>
               <button
                 onClick={toggleDarkMode}
-                className="p-3 rounded-full bg-white dark:bg-slate-700 text-slate-600 dark:text-yellow-400 shadow-sm border border-slate-200 dark:border-slate-600 transition-transform active:scale-95"
+                className="p-2.5 rounded-full bg-white dark:bg-slate-700 text-slate-600 dark:text-yellow-400 shadow-sm border border-slate-200 dark:border-slate-600 transition-transform active:scale-95"
               >
-                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
             </div>
           </div>
@@ -1642,13 +1669,15 @@ export default function App() {
       <StatsSection />
 
       {/* Experience & Education */}
-      <section id="experience" className="py-20 px-6 container mx-auto max-w-5xl">
+      {/* --- UPDATE 2: Section Experience (Gabungan Work, Org, dan Edu) --- */}
+      <section id="experience" className="py-20 px-6 container mx-auto max-w-7xl">
         <Reveal>
           <h2 className="text-3xl font-bold mb-12 text-center text-gradient">Journey & Experience</h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Experience */}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 xl:gap-12">
+
+          {/* Kolom 1: Work Experience (Warna Pink) */}
           <div>
             <Reveal>
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -1694,14 +1723,12 @@ export default function App() {
                   desc: "Developed a non-invasive hemoglobin measurement device using Raspberry Pi and built two research prototypes."
                 }
               ].map((exp, i) => (
-                <Reveal>
+                <Reveal key={i}>
                   <div
-                    key={i}
                     className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-200/50 dark:hover:shadow-pink-900/40 dark:hover:border-pink-500/40 transition-all duration-300 cursor-default"
                     style={{ transitionDelay: `${i * 0.15}s` }}
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-pink-200 dark:bg-pink-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-pink-400 group-hover:to-blue-400 transition-all duration-500"></div>
-
                     <div className="absolute left-[-5px] top-6 w-3 h-3 bg-pink-500 rounded-full ring-4 ring-white dark:ring-slate-800 group-hover:scale-150 group-hover:bg-blue-500 group-hover:ring-blue-100 dark:group-hover:ring-blue-900/50 transition-all duration-300"></div>
 
                     <h4 className="font-bold text-lg text-main group-hover:text-pink-600 dark:group-hover:!text-pink-400 transition-colors duration-300">{exp.title}</h4>
@@ -1713,9 +1740,35 @@ export default function App() {
             </div>
           </div>
 
-          {/* Education */}
+          {/* Kolom 2: Organization (Warna Ungu) */}
           <div>
-            <Reveal>
+            <Reveal delay={0.2}>
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Users className="text-purple-500" /> Organization
+              </h3>
+            </Reveal>
+            <div className="space-y-6">
+              {ORGANIZATIONS_DATA.map((org, i) => (
+                <Reveal key={`org-${i}`}>
+                  <div
+                    className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-200/50 dark:hover:shadow-purple-900/40 dark:hover:border-purple-500/40 transition-all duration-300 cursor-default"
+                    style={{ transitionDelay: `${(i + 1) * 0.15}s` }}
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-purple-200 dark:bg-purple-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-500"></div>
+                    <div className="absolute left-[-5px] top-6 w-3 h-3 bg-purple-500 rounded-full ring-4 ring-white dark:ring-slate-800 group-hover:scale-150 group-hover:bg-pink-500 group-hover:ring-pink-100 dark:group-hover:ring-pink-900/50 transition-all duration-300"></div>
+
+                    <h4 className="font-bold text-lg text-main group-hover:text-purple-600 dark:group-hover:!text-purple-400 transition-colors duration-300">{org.title}</h4>
+                    <p className="text-sm text-purple-500 font-medium mb-2">{org.org} | {org.period}</p>
+                    <div className="text-muted text-sm leading-relaxed">{org.desc}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Kolom 3: Education (Warna Biru) */}
+          <div>
+            <Reveal delay={0.4}>
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
                 <GraduationCap className="text-blue-500" /> Education
               </h3>
@@ -1728,33 +1781,31 @@ export default function App() {
                   period: "Jul 2018 - Aug 2021",
                   desc: (
                     <ul className="list-disc ml-4 space-y-1.5 mt-2 text-muted text-sm leading-relaxed">
-                      <li><strong className="text-slate-700">GPA:</strong> 3.86 / 4.00 (Cum Laude)</li>
-                      <li><strong className="text-slate-700">Final Project:</strong> Developed a non-invasive hemoglobin measurement device using Raspberry Pi (Collaboration with Dept. of Physics, IPB).</li>
-                      <li><strong className="text-slate-700">Scholarships:</strong> PPA Scholarship (2019) & Bank Indonesia Scholarship (2020).</li>
-                      <li><strong className="text-slate-700">Activities:</strong> Actively involved in 10+ campus events, faculty-led research, and technical skills training.</li>
+                      <li><strong className="text-slate-700 dark:text-slate-300">GPA:</strong> 3.86 / 4.00 (Cum Laude)</li>
+                      <li><strong className="text-slate-700 dark:text-slate-300">Final Project:</strong> Developed a non-invasive hemoglobin measurement device using Raspberry Pi (Collaboration with Dept. of Physics, IPB).</li>
+                      <li><strong className="text-slate-700 dark:text-slate-300">Scholarships:</strong> PPA Scholarship (2019) & Bank Indonesia Scholarship (2020).</li>
+                      <li><strong className="text-slate-700 dark:text-slate-300">Activities:</strong> Actively involved in 10+ campus events, faculty-led research, and technical skills training.</li>
                     </ul>
                   )
                 }
               ].map((edu, i) => (
-                <Reveal>
+                <Reveal key={`edu-${i}`}>
                   <div
-                    key={i}
                     className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-200/50 dark:hover:shadow-blue-900/40 dark:hover:border-blue-500/40 transition-all duration-300 cursor-default"
-                    style={{ transitionDelay: `${(i + 1) * 0.15}s` }}
+                    style={{ transitionDelay: `${(i + 2) * 0.15}s` }}
                   >
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-200 dark:bg-blue-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-blue-400 group-hover:to-pink-400 transition-all duration-500"></div>
-
-                    <div className="absolute left-[-5px] top-6 w-3 h-3 bg-blue-500 rounded-full ring-4 ring-white dark:ring-slate-800 group-hover:scale-150 group-hover:bg-pink-500 group-hover:ring-pink-100 dark:group-hover:ring-pink-900/50 transition-all duration-300"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-200 dark:bg-blue-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500"></div>
+                    <div className="absolute left-[-5px] top-6 w-3 h-3 bg-blue-500 rounded-full ring-4 ring-white dark:ring-slate-800 group-hover:scale-150 group-hover:bg-purple-500 group-hover:ring-purple-100 dark:group-hover:ring-purple-900/50 transition-all duration-300"></div>
 
                     <h4 className="font-bold text-lg text-main group-hover:text-blue-600 dark:group-hover:!text-blue-400 transition-colors duration-300">{edu.title}</h4>
                     <p className="text-sm text-blue-500 font-medium mb-2">{edu.school} | {edu.period}</p>
-
                     <div>{edu.desc}</div>
                   </div>
                 </Reveal>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
@@ -1884,8 +1935,8 @@ export default function App() {
               isPrivate: false
             }
           ].map((project, i) => (
-            <Reveal>
-              <div key={i} className="project-card glass-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-300" style={{ transitionDelay: `${(i % 3) * 0.15}s` }}>
+            <Reveal key={i}>
+              <div className="project-card glass-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-300" style={{ transitionDelay: `${(i % 3) * 0.15}s` }}>
 
                 <div className="h-48 overflow-hidden relative shrink-0">
                   <img src={project.img} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
