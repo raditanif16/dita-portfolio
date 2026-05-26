@@ -29,37 +29,37 @@ const InstagramIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" h
 const SKILLS_DATA = [
   {
     title: "Programming Languages",
-    icon: <Code className="w-6 h-6 text-blue-500" />,
+    icon: <Code className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />,
     hoverClass: "hover:!bg-blue-500 hover:!text-white hover:!border-blue-500",
     skills: ["C#", "JavaScript", "TypeScript", "PHP", "Kotlin", "HTML", "CSS"]
   },
   {
     title: "Frameworks & Libraries",
-    icon: <Layers className="w-6 h-6 text-pink-500" />,
+    icon: <Layers className="w-5 h-5 md:w-6 md:h-6 text-pink-500" />,
     hoverClass: "hover:!bg-pink-500 hover:!text-white hover:!border-pink-500",
     skills: [".NET / ASP.NET Core", "React", "Node.js", "Express.js", "NestJS", "Laravel", "Material UI"]
   },
   {
     title: "Backend & Database",
-    icon: <Database className="w-6 h-6 text-emerald-500" />,
+    icon: <Database className="w-5 h-5 md:w-6 md:h-6 text-emerald-500" />,
     hoverClass: "hover:!bg-emerald-500 hover:!text-white hover:!border-emerald-500",
     skills: ["REST APIs", "API Integration", "SQL Server", "PostgreSQL", "MySQL", "Sequelize", "NUnit / Moq"]
   },
   {
     title: "3D, AR & VR",
-    icon: <Box className="w-6 h-6 text-purple-500" />,
+    icon: <Box className="w-5 h-5 md:w-6 md:h-6 text-purple-500" />,
     hoverClass: "hover:!bg-purple-500 hover:!text-white hover:!border-purple-500",
     skills: ["Blender", "Unity", "Augmented Reality", "Virtual Reality", "Vuforia", "Meta / Oculus"]
   },
   {
     title: "Tools & Others",
-    icon: <Wrench className="w-6 h-6 text-orange-500" />,
+    icon: <Wrench className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />,
     hoverClass: "hover:!bg-orange-500 hover:!text-white hover:!border-orange-500",
     skills: ["Git", "Postman", "Trello", "Microsoft Office", "Canva"]
   },
   {
     title: "Soft Skills",
-    icon: <Brain className="w-6 h-6 text-indigo-500" />,
+    icon: <Brain className="w-5 h-5 md:w-6 md:h-6 text-indigo-500" />,
     hoverClass: "hover:!bg-indigo-500 hover:!text-white hover:!border-indigo-500",
     skills: ["Analytical thinking", "Critical thinking", "Leadership", "Teamwork", "Problem-solving", "Time management", "Attention to detail"]
   }
@@ -1011,7 +1011,7 @@ const VirtualSupport = () => {
     <>
       <Reveal>
         <div className="glass-card rounded-3xl p-6 text-center max-w-sm mx-auto mt-12 relative z-10">
-          <h3 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
+          <h3 className="text-lg md:text-xl font-bold mb-2 flex items-center justify-center gap-2">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500" /> Virtual Support
           </h3>
           <p className="text-sm text-slate-500 mb-6">If you enjoy my work, send some love!</p>
@@ -1217,7 +1217,7 @@ INSTRUCTIONS:
 
   return (
     <Reveal>
-      <div className="glass-card rounded-3xl p-8 max-w-4xl mx-auto mt-12 bg-gradient-to-br from-white/80 to-pink-50/50 shadow-xl">
+      <div className="glass-card rounded-3xl p-5 md:p-8 max-w-4xl mx-auto mt-12 bg-gradient-to-br from-white/80 to-pink-50/50 shadow-xl">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-pink-200">
@@ -1251,7 +1251,7 @@ INSTRUCTIONS:
         {/* Tab 1: Q&A */}
         {activeTab === 'qa' && (
           <div className="space-y-4 animate-fadeIn">
-            <p className="text-sm text-muted mb-2">Curious about my background? Ask the AI.</p>
+            <p className="text-xs md:text-sm text-muted mb-2">Curious about my background? Ask the AI.</p>
             <textarea
               value={query} onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g., What kind of fintech systems has Radita worked on?"
@@ -1271,7 +1271,7 @@ INSTRUCTIONS:
         {/* Tab 2: Pitch Generator */}
         {activeTab === 'pitch' && (
           <div className="space-y-4 animate-fadeIn">
-            <p className="text-sm text-muted mb-2">Are you a recruiter? Let AI write a custom cover letter pitch for your open role.</p>
+            <p className="text-xs md:text-sm text-muted mb-2">Are you a recruiter? Let AI write a custom cover letter pitch for your open role.</p>
             <div className="grid grid-cols-2 gap-4">
               <input
                 type="text" value={company} onChange={(e) => setCompany(e.target.value)}
@@ -1299,7 +1299,7 @@ INSTRUCTIONS:
         {/* Tab 3: Job Match Analyzer */}
         {activeTab === 'match' && (
           <div className="space-y-4 animate-fadeIn">
-            <p className="text-sm text-muted mb-2">Paste a Job Description here. AI will analyze how well my skills match your requirements!</p>
+            <p className="text-xs md:text-sm text-muted mb-2">Paste a Job Description here. AI will analyze how well my skills match your requirements!</p>
             <textarea
               value={jobDesc} onChange={(e) => setJobDesc(e.target.value)}
               placeholder="Paste Job Description here (e.g., 'Looking for a developer with React and .NET experience...')"
@@ -1332,9 +1332,9 @@ const CertificationSection = ({ setSelectedImage }) => {
   const filteredCerts = CERTIFICATIONS_DATA.filter(cert => cert.category === activeCategory);
 
   return (
-    <section id="certifications" className="py-20 px-6 container mx-auto max-w-6xl">
+    <section id="certifications" className="py-12 md:py-20 px-6 container mx-auto max-w-6xl">
       <Reveal>
-        <h2 className="text-3xl font-bold mb-8 text-center text-gradient">Certifications</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-gradient">Certifications</h2>
       </Reveal>
 
       <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
@@ -1395,7 +1395,7 @@ const RecruiterFit = () => {
 
   return (
     <Reveal>
-      <div className="glass-card recruiter-card-anim recruiter-glow rounded-3xl p-8 max-w-2xl mx-auto mt-12 dark:bg-slate-900/80 dark:border-slate-700/60">
+      <div className="glass-card recruiter-card-anim recruiter-glow rounded-3xl p-5 md:p-8 max-w-2xl mx-auto mt-12 dark:bg-slate-900/80 dark:border-slate-700/60">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-100 to-pink-100 dark:from-blue-900/50 dark:to-pink-900/50 flex items-center justify-center text-blue-500 dark:text-blue-400">
             <UserCheck className="w-6 h-6" />
@@ -1425,7 +1425,7 @@ const RecruiterFit = () => {
           <p className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-blue-600 dark:from-pink-400 dark:to-blue-400 text-lg mb-2">
             🎉 We are a perfect match! 🎉
           </p>
-          <p className="text-sm text-muted mb-4 dark:text-slate-300">I'd love to chat about how I can contribute to your team.</p>
+          <p className="text-xs md:text-sm text-muted mb-4 dark:text-slate-300">I'd love to chat about how I can contribute to your team.</p>
           <a href="#contact" className="inline-block px-6 py-2 bg-blue-500 text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/30 dark:shadow-blue-900/50">
             Schedule a Call
           </a>
@@ -1449,7 +1449,7 @@ const StatsSection = () => {
           {stats.map((stat, index) => (
             <div 
               key={index} 
-              className="glass-card p-3 md:p-6 rounded-2xl md:rounded-3xl text-center hover:scale-105 transition-transform duration-300 flex flex-col justify-center"
+              className="glass-card p-3 md:p-4 md:p-6 rounded-2xl md:rounded-3xl text-center hover:scale-105 transition-transform duration-300 flex flex-col justify-center"
             >
               <h3 className="text-2xl md:text-4xl font-bold text-gradient mb-1">{stat.value}</h3>
               <p className="text-[10px] md:text-sm text-slate-500 font-medium uppercase tracking-wider leading-tight">
@@ -1467,6 +1467,7 @@ const StatsSection = () => {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('about');
+  const [activeExp, setActiveExp] = useState('work');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -1545,7 +1546,7 @@ export default function App() {
       <MusicWidget />
 
       <nav className={`fixed top-0 left-0 right-0 z-[60] mx-4 mt-4 rounded-full px-6 py-3 flex justify-between items-center transition-all duration-300 ${isMenuOpen ? 'bg-transparent border-transparent shadow-none' : 'glass-card'}`}>
-        <a href="#" className="text-xl font-bold text-gradient relative z-[70]">Dita</a>
+        <a href="#" className="text-lg md:text-xl font-bold text-gradient relative z-[70]">Dita</a>
 
         <div className="hidden md:flex gap-6 items-center">
           {navLinks.map(link => (
@@ -1670,17 +1671,31 @@ export default function App() {
 
       {/* Experience & Education */}
       {/* --- UPDATE 2: Section Experience (Gabungan Work, Org, dan Edu) --- */}
-      <section id="experience" className="py-20 px-6 container mx-auto max-w-7xl">
+      <section id="experience" className="py-12 md:py-20 px-6 container mx-auto max-w-7xl">
         <Reveal>
-          <h2 className="text-3xl font-bold mb-12 text-center text-gradient">Journey & Experience</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-gradient">Journey & Experience</h2>
+        </Reveal>
+
+        <Reveal>
+          <div className="flex md:hidden w-full overflow-x-auto hide-scrollbar bg-white/50 dark:bg-slate-800/50 p-1.5 rounded-xl border border-slate-100 dark:border-slate-700 shadow-inner mb-6 gap-2">
+            <button onClick={() => setActiveExp('work')} className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${activeExp === 'work' ? 'bg-white dark:bg-slate-700 text-pink-600 dark:text-pink-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <Briefcase className="w-3.5 h-3.5" /> Work
+            </button>
+            <button onClick={() => setActiveExp('org')} className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${activeExp === 'org' ? 'bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <Users className="w-3.5 h-3.5" /> Org
+            </button>
+            <button onClick={() => setActiveExp('edu')} className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${activeExp === 'edu' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}>
+              <GraduationCap className="w-3.5 h-3.5" /> Edu
+            </button>
+          </div>
         </Reveal>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 xl:gap-12">
 
           {/* Kolom 1: Work Experience (Warna Pink) */}
-          <div>
+          <div className={`${activeExp === 'work' ? 'block' : 'hidden'} md:block`}>
             <Reveal>
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                 <Briefcase className="text-pink-500" /> Work Experience
               </h3>
             </Reveal>
@@ -1725,7 +1740,7 @@ export default function App() {
               ].map((exp, i) => (
                 <Reveal key={i}>
                   <div
-                    className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-200/50 dark:hover:shadow-pink-900/40 dark:hover:border-pink-500/40 transition-all duration-300 cursor-default"
+                    className="group glass-card p-4 md:p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-200/50 dark:hover:shadow-pink-900/40 dark:hover:border-pink-500/40 transition-all duration-300 cursor-default"
                     style={{ transitionDelay: `${i * 0.15}s` }}
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-pink-200 dark:bg-pink-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-pink-400 group-hover:to-blue-400 transition-all duration-500"></div>
@@ -1741,9 +1756,9 @@ export default function App() {
           </div>
 
           {/* Kolom 2: Organization (Warna Ungu) */}
-          <div>
+          <div className={`${activeExp === 'org' ? 'block' : 'hidden'} md:block`}>
             <Reveal delay={0.2}>
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                 <Users className="text-purple-500" /> Organization
               </h3>
             </Reveal>
@@ -1751,7 +1766,7 @@ export default function App() {
               {ORGANIZATIONS_DATA.map((org, i) => (
                 <Reveal key={`org-${i}`}>
                   <div
-                    className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-200/50 dark:hover:shadow-purple-900/40 dark:hover:border-purple-500/40 transition-all duration-300 cursor-default"
+                    className="group glass-card p-4 md:p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-200/50 dark:hover:shadow-purple-900/40 dark:hover:border-purple-500/40 transition-all duration-300 cursor-default"
                     style={{ transitionDelay: `${(i + 1) * 0.15}s` }}
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-purple-200 dark:bg-purple-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-500"></div>
@@ -1767,9 +1782,9 @@ export default function App() {
           </div>
 
           {/* Kolom 3: Education (Warna Biru) */}
-          <div>
+          <div className={`${activeExp === 'edu' ? 'block' : 'hidden'} md:block`}>
             <Reveal delay={0.4}>
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
                 <GraduationCap className="text-blue-500" /> Education
               </h3>
             </Reveal>
@@ -1791,7 +1806,7 @@ export default function App() {
               ].map((edu, i) => (
                 <Reveal key={`edu-${i}`}>
                   <div
-                    className="group glass-card p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-200/50 dark:hover:shadow-blue-900/40 dark:hover:border-blue-500/40 transition-all duration-300 cursor-default"
+                    className="group glass-card p-4 md:p-6 rounded-2xl relative pl-10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-200/50 dark:hover:shadow-blue-900/40 dark:hover:border-blue-500/40 transition-all duration-300 cursor-default"
                     style={{ transitionDelay: `${(i + 2) * 0.15}s` }}
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-200 dark:bg-blue-900/50 rounded-l-2xl group-hover:bg-gradient-to-b group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500"></div>
@@ -1810,10 +1825,10 @@ export default function App() {
       </section>
 
       {/* NEW INTERACTIVE SKILLS SECTION */}
-      <section id="skills" className="py-20 px-6 container mx-auto max-w-5xl">
+      <section id="skills" className="py-12 md:py-20 px-6 container mx-auto max-w-5xl">
         <Reveal>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gradient mb-4">Skills</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-4">Skills</h2>
             <p className="text-muted max-w-2xl mx-auto">
               A blend of technical expertise and creative problem solving.
             </p>
@@ -1848,10 +1863,10 @@ export default function App() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="py-20 px-6 container mx-auto max-w-6xl">
+      <section id="projects" className="py-12 md:py-20 px-6 container mx-auto max-w-6xl">
         <Reveal>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gradient mb-4">Featured Projects & Research</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-4">Featured Projects & Research</h2>
             <p className="text-slate-500 max-w-2xl mx-auto">
               A showcase of financial systems, immersive tech, and hardware research. <br />
               <span className="text-xs font-semibold bg-blue-50 text-blue-500 px-2 py-1 rounded-md mt-2 inline-block">
@@ -1862,7 +1877,7 @@ export default function App() {
 
         </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar pb-6 -mx-5 px-5 md:mx-0 md:px-0">
           {[
             {
               title: "Mini ATM System",
@@ -1935,7 +1950,7 @@ export default function App() {
               isPrivate: false
             }
           ].map((project, i) => (
-            <Reveal key={i}>
+            <Reveal key={i} className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center">
               <div className="project-card glass-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-300" style={{ transitionDelay: `${(i % 3) * 0.15}s` }}>
 
                 <div className="h-48 overflow-hidden relative shrink-0">
@@ -1965,8 +1980,8 @@ export default function App() {
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-main mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
-                  <p className="text-sm text-muted mb-6 flex-1 leading-relaxed">{project.desc}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-main mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
+                  <p className="text-xs md:text-sm text-muted mb-6 flex-1 leading-relaxed">{project.desc}</p>
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((t, idx) => (
@@ -1989,7 +2004,7 @@ export default function App() {
       {/* RECRUITER & AI SECTION */}
       <section className="py-10 px-6 container mx-auto max-w-5xl">
         <Reveal>
-          <h2 className="text-3xl font-bold mb-4 text-center text-gradient ">For Recruiters</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-gradient ">For Recruiters</h2>
         </Reveal>
         <Reveal>
           <p className="text-center text-slate-500 mb-8">Take a quick look at my fit, or explore the AI tools below.</p>
@@ -2006,14 +2021,14 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 container mx-auto max-w-4xl">
+      <section id="contact" className="py-12 md:py-20 px-6 container mx-auto max-w-4xl">
         <Reveal>
-          <div className="glass-card rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-100/50">
+          <div className="glass-card rounded-3xl p-5 md:p-8 md:p-12 shadow-2xl shadow-blue-100/50">
             <div className="grid md:grid-cols-2 gap-12">
 
               {/* Kiri: Info Kontak */}
               <div>
-                <h2 className="text-3xl font-bold mb-4 text-gradient">Let's Connect!</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">Let's Connect!</h2>
                 <p className="text-muted mb-8 leading-relaxed">
                   Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
@@ -2078,7 +2093,7 @@ export default function App() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="group w-full py-4 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 mt-2">
+                <button type="submit" className="group w-full py-3 md:py-4 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 mt-2">
                   Send Message <Send className="w-5 h-5" />
                 </button>
               </form>
@@ -2116,7 +2131,7 @@ export default function App() {
           onClick={() => setShowSuccess(false)}
         >
           <div
-            className="modal-glass glass-card rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl popup-anim relative overflow-hidden"
+            className="modal-glass glass-card rounded-[2rem] p-5 md:p-8 max-w-sm w-full text-center shadow-2xl popup-anim relative overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-400 to-blue-400"></div>
